@@ -11,24 +11,58 @@ Rectangle {
     property string label
     property color textColor: buttonLabel.color
     property real labelSize: 14
-
     // possible values : left, right, down
     // if none of this is used, down is used as default
     property string labelPosition
 
-    width : ( (labelPosition == "right" || labelPosition == "left" ) ?
-            buttonRadius * 2 + buttonLabel.width : buttonRadius * 2 )
-    height : buttonRadius * 2
+    property string imgSource
+    property int imgWidth
+    property int imgHeight
 
     // the image button
     Image{
+        id : buttonImage
+
+        source : parent.imgSource
+
+        width: parent.imgWidth > 0 ? parent.imgWidth : implicitWidth
+        height: parent.imgHeight > 0 ? parent.imgHeight : implicitHeight
+
+        x : ( labelPosition === "left" ? buttonLabel.width : 0 )
+
     }
 
     // this is the text label positionned next to the button
     Text{
         id: buttonLabel
 
-        // todo : some logic to set x and y relativly to the parent
+        text : parent.label
+
+        x : getTextXPosition()
+        y : getTextYPosition()
+    }
+
+    function getTextXPosition(){
+        switch( labelPosition )
+        {
+        case "left":
+            return 0;
+        case "right":
+            return buttonImage.width;
+        default: // down
+            return ( buttonImage.width - buttonLabel.width ) / 2;
+        }
+    }
+
+    function getTextYPosition(){
+        if( labelPosition == "left" || labelPosition == "right" )
+        {
+            return ( buttonImage.height - buttonLabel.height ) / 2;
+        }
+        else
+        {
+            return buttonImage.height;
+        }
     }
 }
 
