@@ -4,7 +4,9 @@ import QtQuick 1.1
 // The image button is made of an image and a label. Up to three images can be
 // provided, for normal, hovered and pushed states.
 Rectangle {
-    id: roundbutton
+    id: imageButton
+
+    signal clicked
 
     color: "transparent"
 
@@ -16,6 +18,8 @@ Rectangle {
     property string labelPosition
 
     property string imgSource
+    property string imgHooverSource
+    property string imgClickedSource
     property int imgWidth
     property int imgHeight
 
@@ -30,6 +34,31 @@ Rectangle {
 
         x : ( labelPosition === "left" ? buttonLabel.width : 0 )
 
+        MouseArea{
+            id : imageMouseArea
+
+            hoverEnabled: true
+
+            anchors.fill: parent
+
+            onClicked: {
+                imageButton.clicked()
+            }
+
+            states : [
+                State{
+                    name : "pressed"
+                    when : imageMouseArea.pressed == true
+                    PropertyChanges { target: buttonImage; source: imgClickedSource }
+                },
+                State{
+                    name : "hoovered"
+                    when : imageMouseArea.containsMouse == true
+                    PropertyChanges { target: buttonImage; source: imgHooverSource }
+                }
+
+            ]
+        }
     }
 
     // this is the text label positionned next to the button
