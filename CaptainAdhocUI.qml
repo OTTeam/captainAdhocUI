@@ -43,12 +43,14 @@ Rectangle {
 
     ImageButton{
         id : buttonPrev
-    }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
+        imgSource: "arrow_left.png"
+        imgHooverSource : "arrow_left_hoover.png"
+        imgClickedSource : "arrow_left_clicked.png"
+        imgWidth: 60
+        imgHeight: 60
+
+        label : "test button"
+        labelPosition : "right"
     }
 }
