@@ -30,7 +30,7 @@ Rectangle {
     }
 
     Rectangle{
-        id:fileDisplay
+        id: fileDisplay
         color: "white"
 
         y: ribbonHeight + separatorHeight
