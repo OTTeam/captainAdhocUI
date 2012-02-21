@@ -41,6 +41,10 @@ Rectangle {
         anchors.bottom: parent.bottom
     }
 
+    ImageButton{
+        id : buttonPrev
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
