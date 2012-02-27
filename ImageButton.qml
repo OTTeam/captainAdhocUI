@@ -1,4 +1,3 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 
 // The image button is made of an image and a label. Up to three images can be
@@ -22,6 +21,8 @@ Rectangle {
     property string imgClickedSource
     property int imgWidth
     property int imgHeight
+
+    onClicked: { console.log( "button clicked" ) }
 
     // the image button
     Image{
