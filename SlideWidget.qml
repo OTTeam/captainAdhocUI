@@ -12,11 +12,15 @@ Item {
 
     property int current: 0
 
+    signal slideChanged( string title )
+
     signal gotoNextSlide
     signal gotoPrevSlide
 
     onGotoNextSlide: showNextSlide()
     onGotoPrevSlide: showPrevSlide()
+
+    onSlideChanged: { console.log( "new slide title : " + title ) }
 
     Component.onCompleted: {
         if( stack.children.length > 0 )
@@ -33,6 +37,8 @@ Item {
                 else
                     stack.children[ i ].x = 0
             }
+
+            slideWidget.slideChanged( stack.children[ current ].title );
         }
     }
 
@@ -77,6 +83,8 @@ Item {
             nextViewAnimation.start();
 
             current++;
+
+            slideWidget.slideChanged( stack.children[ current ].title )
         }
     }
 
@@ -102,6 +110,8 @@ Item {
             nextViewAnimation.start();
 
             current--;
+
+            slideWidget.slideChanged( stack.children[ current ].title )
         }
     }
 }

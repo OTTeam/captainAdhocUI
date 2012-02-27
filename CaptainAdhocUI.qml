@@ -11,6 +11,8 @@ Rectangle {
     Component.onCompleted: {
         buttonNext.clicked.connect( mainDisplay.gotoNextSlide )
         buttonPrev.clicked.connect( mainDisplay.gotoPrevSlide )
+
+        mainDisplay.slideChanged.connect( currSlideTitle.changeText )
     }
 
     Rectangle{
@@ -58,6 +60,8 @@ Rectangle {
             id: firstSlide
             color: "lightsteelblue"
 
+            property string title: "PLOP"
+
             width: parent.width
             height: parent.height
         }
@@ -66,6 +70,8 @@ Rectangle {
             id: secondSlide
             color:"lightgreen"
 
+            property string title: "PLIP"
+
             width: parent.width
             height: parent.height
         }
@@ -73,6 +79,8 @@ Rectangle {
         Rectangle{
             id: thirdSlide
             color:"pink"
+
+            property string title: "PLOUP"
 
             width: parent.width
             height: parent.height
@@ -115,7 +123,25 @@ Rectangle {
             right: parent.right
             top: parent.top
         }
+    }
 
-        Component.onCompleted: { console.log( width + " // " + height ) }
+    Text{
+        id : currSlideTitle
+
+        anchors{
+            verticalCenter: buttonNext.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        text: ""
+
+        font{
+            bold: true
+            pointSize: 20
+        }
+
+        function changeText( title ){
+            text = title
+        }
     }
 }
