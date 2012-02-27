@@ -52,7 +52,7 @@ Rectangle {
             bottom: parent.bottom
         }
 
-        current: 0
+        current: 1
 
         Rectangle{
             id: firstSlide
@@ -91,8 +91,10 @@ Rectangle {
         label : "next Slide"
         labelPosition : "right"
 
-        anchors.left: parent.left
-        anchors.top: parent.top
+        anchors{
+            left: parent.left
+            top: parent.top
+        }
     }
 
     ImageButton{
@@ -107,6 +109,13 @@ Rectangle {
         label: "previous slide"
         labelPosition: "left"
 
-        x: 400
+        //x: 400
+
+        anchors{
+            right: parent.right
+            top: parent.top
+        }
+
+        Component.onCompleted: { console.log( width + " // " + height ) }
     }
 }
