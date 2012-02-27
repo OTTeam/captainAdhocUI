@@ -22,6 +22,9 @@ Rectangle {
     property int imgWidth
     property int imgHeight
 
+    width: childrenRect.width
+    height: childrenRect.height
+
     onClicked: { console.log( "button clicked" ) }
 
     // the image button
