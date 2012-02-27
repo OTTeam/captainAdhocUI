@@ -1,18 +1,28 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 
 Rectangle {
+
     width: 640
     height: 400
 
     property int ribbonHeight: 150
     property int separatorHeight : 5
 
+    Component.onCompleted: {
+        buttonNext.clicked.connect( mainDisplay.gotoNextSlide )
+        buttonPrev.clicked.connect( mainDisplay.gotoPrevSlide )
+    }
+
     Rectangle{
         id:ribbon
         color: "white"
+
         height: ribbonHeight
-        width: parent.width
+
+        anchors{
+            left: parent.left
+            right: parent.right
+        }
     }
 
     Rectangle{
@@ -23,26 +33,54 @@ Rectangle {
             GradientStop{ position: 1.0; color: "lightgrey" }
         }
 
-        y: ribbonHeight
+        anchors{
+            top: ribbon.bottom
+            left: parent.left
+            right: parent.right
+        }
 
-        width: parent.width
         height: separatorHeight
     }
 
-    Rectangle{
-        id: fileDisplay
-        color: "white"
+    SlideWidget{
+        id: mainDisplay
 
-        y: ribbonHeight + separatorHeight
+        anchors{
+            top: separator.bottom
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
 
-        width: parent.width
-        height: parent.height - ribbonHeight - separatorHeight
+        current: 0
 
-        anchors.bottom: parent.bottom
+        Rectangle{
+            id: firstSlide
+            color: "lightsteelblue"
+
+            width: parent.width
+            height: parent.height
+        }
+
+        Rectangle{
+            id: secondSlide
+            color:"lightgreen"
+
+            width: parent.width
+            height: parent.height
+        }
+
+        Rectangle{
+            id: thirdSlide
+            color:"pink"
+
+            width: parent.width
+            height: parent.height
+        }
     }
 
     ImageButton{
-        id : buttonPrev
+        id : buttonNext
 
         imgSource: "arrow_left.png"
         imgHooverSource : "arrow_left_hoover.png"
@@ -50,7 +88,25 @@ Rectangle {
         imgWidth: 60
         imgHeight: 60
 
-        label : "test button"
+        label : "next Slide"
         labelPosition : "right"
+
+        anchors.left: parent.left
+        anchors.top: parent.top
+    }
+
+    ImageButton{
+        id : buttonPrev
+
+        imgSource: "arrow_right.png"
+        imgHooverSource: "arrow_right_hoover.png"
+        imgClickedSource: "arrow_right_clicked.png"
+        imgWidth: 60
+        imgHeight: 60
+
+        label: "previous slide"
+        labelPosition: "left"
+
+        x: 400
     }
 }
