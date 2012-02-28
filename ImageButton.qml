@@ -19,6 +19,7 @@ Rectangle {
     property string imgSource
     property string imgHooverSource
     property string imgClickedSource
+    property string imgDisabledSource
     property int imgWidth
     property int imgHeight
 
@@ -59,8 +60,12 @@ Rectangle {
                     name : "hoovered"
                     when : imageMouseArea.containsMouse == true
                     PropertyChanges { target: buttonImage; source: imgHooverSource }
+                },
+                State{
+                    name : "disabled"
+                    when : imageButton.enabled == false
+                    PropertyChanges { target: buttonImage; source: imgDisabledSource }
                 }
-
             ]
         }
     }
