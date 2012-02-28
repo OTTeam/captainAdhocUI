@@ -76,7 +76,7 @@ Item {
             current = 0;
         }
 
-        changeSlide( currView, nextView, true );
+        changeSlide( currView, nextView, false );
     }
 
     function showPrevSlide(){
@@ -94,7 +94,7 @@ Item {
             nextView = stack.children[ current ];
         }
 
-        changeSlide( currView, nextView, false );
+        changeSlide( currView, nextView, true );
     }
 
     function changeSlide( currView, nextView, leftToRight ){
