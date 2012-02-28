@@ -64,6 +64,15 @@ Rectangle {
 
             width: parent.width
             height: parent.height
+
+            Text{
+                text: "1st slide !!"
+
+                anchors{
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+            }
         }
 
         Rectangle{
@@ -74,6 +83,15 @@ Rectangle {
 
             width: parent.width
             height: parent.height
+
+            Text{
+                text: "2nd slide !!"
+
+                anchors{
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+            }
         }
 
         Rectangle{
@@ -84,6 +102,15 @@ Rectangle {
 
             width: parent.width
             height: parent.height
+
+            Text{
+                text: "3rd slide !!"
+
+                anchors{
+                    horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
+                }
+            }
         }
     }
 
