@@ -60,7 +60,7 @@ Rectangle {
             id: firstSlide
             color: "lightsteelblue"
 
-            property string title: "PLOP"
+            property string title: "1st slide"
 
             width: parent.width
             height: parent.height
@@ -70,7 +70,7 @@ Rectangle {
             id: secondSlide
             color:"lightgreen"
 
-            property string title: "PLIP"
+            property string title: "2nd slide"
 
             width: parent.width
             height: parent.height
@@ -80,7 +80,7 @@ Rectangle {
             id: thirdSlide
             color:"pink"
 
-            property string title: "PLOUP"
+            property string title: "3rd slide"
 
             width: parent.width
             height: parent.height
