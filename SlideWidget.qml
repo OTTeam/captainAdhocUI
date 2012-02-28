@@ -76,7 +76,7 @@ Item {
             current = 0;
         }
 
-        changeSlide( currView, nextView );
+        changeSlide( currView, nextView, true );
     }
 
     function showPrevSlide(){
@@ -94,10 +94,10 @@ Item {
             nextView = stack.children[ current ];
         }
 
-        changeSlide( currView, nextView );
+        changeSlide( currView, nextView, false );
     }
 
-    function changeSlide( currView, nextView ){
+    function changeSlide( currView, nextView, leftToRight ){
         if( currentViewAnimation.running )
             currentViewAnimation.complete();
 
@@ -105,11 +105,11 @@ Item {
             nextViewAnimation.complete();
 
         currentViewAnimation.target = currView;
-        currentViewAnimation.to     = slideWidget.width * 1; // the current view is sent to the left
+        currentViewAnimation.to     = leftToRight ? slideWidget.width : - slideWidget.width;
         currentViewAnimation.start();
 
         nextViewAnimation.target = nextView;
-        nextViewAnimation.from   = - slideWidget.width;
+        nextViewAnimation.from   = leftToRight ? - slideWidget.width : slideWidget.width;
         nextViewAnimation.to     = -0; // no idea why the "-" is here but it was in the example
         nextViewAnimation.start();
 
