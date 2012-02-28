@@ -117,8 +117,6 @@ Rectangle {
         label: "next slide"
         labelPosition: "left"
 
-        //x: 400
-
         anchors{
             right: parent.right
             top: parent.top
