@@ -9,8 +9,8 @@ Rectangle {
     property int separatorHeight : 5
 
     Component.onCompleted: {
+        buttonPrevious.clicked.connect( mainDisplay.gotoPrevSlide )
         buttonNext.clicked.connect( mainDisplay.gotoNextSlide )
-        buttonPrev.clicked.connect( mainDisplay.gotoPrevSlide )
 
         mainDisplay.slideChanged.connect( currSlideTitle.changeText )
     }
@@ -88,7 +88,7 @@ Rectangle {
     }
 
     ImageButton{
-        id : buttonNext
+        id : buttonPrevious
 
         imgSource: "arrow_left.png"
         imgHooverSource : "arrow_left_hoover.png"
@@ -96,7 +96,7 @@ Rectangle {
         imgWidth: 60
         imgHeight: 60
 
-        label : "next Slide"
+        label : "previous Slide"
         labelPosition : "right"
 
         anchors{
@@ -106,7 +106,7 @@ Rectangle {
     }
 
     ImageButton{
-        id : buttonPrev
+        id : buttonNext
 
         imgSource: "arrow_right.png"
         imgHooverSource: "arrow_right_hoover.png"
@@ -114,7 +114,7 @@ Rectangle {
         imgWidth: 60
         imgHeight: 60
 
-        label: "previous slide"
+        label: "next slide"
         labelPosition: "left"
 
         //x: 400
@@ -129,7 +129,7 @@ Rectangle {
         id : currSlideTitle
 
         anchors{
-            verticalCenter: buttonNext.verticalCenter
+            verticalCenter: buttonPrevious.verticalCenter
             horizontalCenter: parent.horizontalCenter
         }
 
