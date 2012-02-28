@@ -12,7 +12,7 @@ Rectangle {
         buttonPrevious.clicked.connect( mainDisplay.gotoPrevSlide )
         buttonNext.clicked.connect( mainDisplay.gotoNextSlide )
 
-        mainDisplay.slideChanged.connect( currSlideTitle.changeText )
+        mainDisplay.slideChanged.connect( updateLabels )
     }
 
     Rectangle{
@@ -164,9 +164,11 @@ Rectangle {
             bold: true
             pointSize: 20
         }
+    }
 
-        function changeText( title ){
-            text = title
-        }
+    function updateLabels(){
+        currSlideTitle.text  = mainDisplay.getCurrentSlideTitle();
+        buttonPrevious.label = mainDisplay.getPrevSlideTitle();
+        buttonNext.label     = mainDisplay.getNextSlideTitle();
     }
 }

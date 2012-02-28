@@ -62,37 +62,21 @@ Item {
     }
 
     function showNextSlide(){
-        var currView = stack.children[ current ];
-        var nextView;
+        var currView = content[ current ];
+        var nextIdx  = getNextSlideIdx();
+        var nextView = content[ nextIdx ];
 
-        if( current < stack.children.length - 1 )
-        {
-            nextView = stack.children[ current + 1 ];
-            current++;
-        }
-        else
-        {
-            nextView = stack.children[ 0 ];
-            current = 0;
-        }
+        current = nextIdx;
 
         changeSlide( currView, nextView, false );
     }
 
     function showPrevSlide(){
-        var currView = stack.children[ current ];
-        var nextView;
+        var currView = content[ current ];
+        var nextIdx  = getPrevSlideIdx();
+        var nextView = content[ nextIdx ];
 
-        if( current > 0 )
-        {
-            nextView = stack.children[ current - 1 ];
-            current--;
-        }
-        else
-        {
-            current = stack.children.length - 1
-            nextView = stack.children[ current ];
-        }
+        current = nextIdx;
 
         changeSlide( currView, nextView, true );
     }
@@ -113,6 +97,26 @@ Item {
         nextViewAnimation.to     = -0; // no idea why the "-" is here but it was in the example
         nextViewAnimation.start();
 
-        slideWidget.slideChanged( stack.children[ current ].title )
+        slideWidget.slideChanged( currView.title )
+    }
+
+    function getNextSlideIdx(){
+        return ( current < content.length - 1 ? current + 1 : 0 );
+    }
+
+    function getPrevSlideIdx(){
+        return ( current > 0 ? current - 1 : content.length - 1 );
+    }
+
+    function getCurrentSlideTitle(){
+        return content[ current ].title;
+    }
+
+    function getPrevSlideTitle(){
+        return content[ getPrevSlideIdx() ].title;
+    }
+
+    function getNextSlideTitle(){
+        return content[ getNextSlideIdx() ].title;
     }
 }
