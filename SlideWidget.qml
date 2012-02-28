@@ -62,56 +62,57 @@ Item {
     }
 
     function showNextSlide(){
+        var currView = stack.children[ current ];
+        var nextView;
+
         if( current < stack.children.length - 1 )
         {
-            var currView = stack.children[ current ];
-            var nextView = stack.children[ current + 1 ];
-
-            if( currentViewAnimation.running )
-                currentViewAnimation.complete();
-
-            if( nextViewAnimation.running )
-                nextViewAnimation.complete();
-
-            currentViewAnimation.target = currView;
-            currentViewAnimation.to     = slideWidget.width * -1; // the current view is sent to the left
-            currentViewAnimation.start();
-
-            nextViewAnimation.target = nextView;
-            nextViewAnimation.from   = slideWidget.width;
-            nextViewAnimation.to     = -0; // no idea why the "-" is here but it was in the example
-            nextViewAnimation.start();
-
+            nextView = stack.children[ current + 1 ];
             current++;
-
-            slideWidget.slideChanged( stack.children[ current ].title )
         }
+        else
+        {
+            nextView = stack.children[ 0 ];
+            current = 0;
+        }
+
+        changeSlide( currView, nextView );
     }
 
     function showPrevSlide(){
+        var currView = stack.children[ current ];
+        var nextView;
+
         if( current > 0 )
         {
-            var currView = stack.children[ current ];
-            var nextView = stack.children[ current - 1 ];
-
-            if( currentViewAnimation.running )
-                currentViewAnimation.complete();
-
-            if( nextViewAnimation.running )
-                nextViewAnimation.complete();
-
-            currentViewAnimation.target = currView;
-            currentViewAnimation.to     = slideWidget.width * 1; // the current view is sent to the left
-            currentViewAnimation.start();
-
-            nextViewAnimation.target = nextView;
-            nextViewAnimation.from   = - slideWidget.width;
-            nextViewAnimation.to     = -0; // no idea why the "-" is here but it was in the example
-            nextViewAnimation.start();
-
+            nextView = stack.children[ current - 1 ];
             current--;
-
-            slideWidget.slideChanged( stack.children[ current ].title )
         }
+        else
+        {
+            current = stack.children.length - 1
+            nextView = stack.children[ current ];
+        }
+
+        changeSlide( currView, nextView );
+    }
+
+    function changeSlide( currView, nextView ){
+        if( currentViewAnimation.running )
+            currentViewAnimation.complete();
+
+        if( nextViewAnimation.running )
+            nextViewAnimation.complete();
+
+        currentViewAnimation.target = currView;
+        currentViewAnimation.to     = slideWidget.width * 1; // the current view is sent to the left
+        currentViewAnimation.start();
+
+        nextViewAnimation.target = nextView;
+        nextViewAnimation.from   = - slideWidget.width;
+        nextViewAnimation.to     = -0; // no idea why the "-" is here but it was in the example
+        nextViewAnimation.start();
+
+        slideWidget.slideChanged( stack.children[ current ].title )
     }
 }
