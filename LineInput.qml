@@ -24,7 +24,7 @@ Item{
             verticalCenter: parent.verticalCenter
         }
 
-        font.pixelSize: parent.height - 16
+        font.pixelSize: parent.height - 8
 
         selectByMouse: true
     }
