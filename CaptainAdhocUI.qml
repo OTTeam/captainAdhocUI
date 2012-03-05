@@ -5,7 +5,7 @@ Rectangle {
     width: 640
     height: 400
 
-    property int ribbonHeight: 150
+    property int ribbonHeight: 90
     property int separatorHeight : 5
 
     Component.onCompleted: {
@@ -54,23 +54,71 @@ Rectangle {
             bottom: parent.bottom
         }
 
-        current: 1
+        current: 0
 
         Rectangle{
-            id: firstSlide
-            color: "lightsteelblue"
+            id: configurationSlide
+            color: "darkgray"
 
-            property string title: "1st slide"
+            property string title: "Configuration"
 
             width: parent.width
             height: parent.height
 
-            Text{
-                text: "1st slide !!"
+            SharedDirectoriesView{
+                id: sharedDirView
 
                 anchors{
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
+                    top: parent.top
+                    left: parent.left
+                    right: parent.right
+                    bottom: downloadFolderConfig.top
+                }
+            }
+
+            Item{
+                id: downloadFolderConfig
+
+                height: 24
+
+                anchors{
+                    margins: 2
+
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+
+                Text {
+                    id: label
+                    text: "Download folder : "
+                    anchors{
+                        left: parent.left
+                        verticalCenter: parent.verticalCenter
+                    }
+                    font.pixelSize: parent.height - 8
+                }
+
+                LineInput{
+                    id: downloadFolderInput
+                    anchors{
+                        left: label.right
+                        right: applyButton.left
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
+                }
+
+                SimpleButton{
+                    id: applyButton
+                    width: 60
+                    label: "Apply"
+                    anchors{
+                        margins: 2
+                        right: parent.right
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
                 }
             }
         }
