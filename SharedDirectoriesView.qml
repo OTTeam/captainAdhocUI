@@ -42,9 +42,9 @@ Item {
             ImageButton{
                 id: delButton
 
-                imgSource: "cross.png"
-                imgHooverSource: "cross_hoover.png"
-                imgClickedSource: "cross_clicked.png"
+                imgSource: "images/cross.png"
+                imgHooverSource: "images/cross_hoover.png"
+                imgClickedSource: "images/cross_clicked.png"
                 imgHeight: parent.height - 5
                 imgWidth: imgHeight
 
