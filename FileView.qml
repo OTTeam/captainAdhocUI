@@ -21,6 +21,7 @@ Item {
             model: FileModel {}
             delegate: listDelegate
             focus: true
+            clip: true
         }
     }
 }
