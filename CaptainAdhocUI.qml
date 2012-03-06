@@ -54,7 +54,7 @@ Rectangle {
             bottom: parent.bottom
         }
 
-        current: 0
+        current: 2
 
         Rectangle{
             id: configurationSlide
@@ -124,40 +124,28 @@ Rectangle {
         }
 
         Rectangle{
-            id: secondSlide
-            color:"lightgreen"
+            id: downloads
+            color:"darkgray"
 
-            property string title: "2nd slide"
+            property string title: "Downloads"
 
             width: parent.width
             height: parent.height
-
-            Text{
-                text: "2nd slide !!"
-
-                anchors{
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
-            }
         }
 
         Rectangle{
             id: thirdSlide
-            color:"pink"
+            color:"darkgray"
 
-            property string title: "3rd slide"
+            property string title: "Available files"
 
             width: parent.width
             height: parent.height
 
-            Text{
-                text: "3rd slide !!"
+            FileView{
+                id:availableFilesView
 
-                anchors{
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
-                }
+                anchors.fill: parent
             }
         }
     }
@@ -165,9 +153,9 @@ Rectangle {
     ImageButton{
         id : buttonPrevious
 
-        imgSource: "arrow_left.png"
-        imgHooverSource : "arrow_left_hoover.png"
-        imgClickedSource : "arrow_left_clicked.png"
+        imgSource: "images/arrow_left.png"
+        imgHooverSource : "images/arrow_left_hoover.png"
+        imgClickedSource : "images/arrow_left_clicked.png"
         imgWidth: 60
         imgHeight: 60
 
@@ -183,9 +171,9 @@ Rectangle {
     ImageButton{
         id : buttonNext
 
-        imgSource: "arrow_right.png"
-        imgHooverSource: "arrow_right_hoover.png"
-        imgClickedSource: "arrow_right_clicked.png"
+        imgSource: "images/arrow_right.png"
+        imgHooverSource: "images/arrow_right_hoover.png"
+        imgClickedSource: "images/arrow_right_clicked.png"
         imgWidth: 60
         imgHeight: 60
 

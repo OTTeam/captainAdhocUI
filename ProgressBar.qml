@@ -13,7 +13,7 @@ Item{
     clip: true
 
     BorderImage {
-        source: "background.png"
+        source: "images/background.png"
         width: parent.width; height: parent.height
         border { left: 4; top: 4; right: 4; bottom: 4 }
     }
