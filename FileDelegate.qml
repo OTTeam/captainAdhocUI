@@ -113,14 +113,16 @@ Component {
                 }
             }
 
-//            Item{
-//                id : status
-//                ProgressBar{
-//                    id: downBar
-//                    x: 300
-//                    y: 35
-//                }
-//            }
+            Item{
+                id : status
+                visible: ( completion >= 0 && completion <= 100 )
+                ProgressBar{
+                    id: downBar
+                    x: 300
+                    y: 28
+                    value: completion
+                }
+            }
 
 
 
