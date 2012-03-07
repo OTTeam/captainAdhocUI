@@ -17,10 +17,26 @@ Item {
             width: parent.width
             height: folder.height
 
-            MouseArea{
-                anchors.fill: parent
-                //onClicked: dirDelegate.state = "selected"
+            Rectangle {
+                    id : hoverArea
+                    width: parent.width
+                    height: parent.height
+                    color: "black"
+                    opacity: 0.1
+
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onEntered:  { parent.opacity = 0.5 }
+                        onExited: { parent.opacity = 0.1}
+                   }
             }
+
+
+//            MouseArea{
+//                anchors.fill: parent
+//                //onClicked: dirDelegate.state = "selected"
+//            }
 
             Text {
                 id: folder
@@ -57,26 +73,26 @@ Item {
         }
     }
 
-    Component{
-        id: dirHighlight
+//    Component{
+//        id: dirHighlight
 
-        Rectangle {
-            color: "lightsteelblue"
+//        Rectangle {
+//            color: "lightsteelblue"
 
-            border{
-                color: "steelblue"
-                width: 1
-            }
+//            border{
+//                color: "steelblue"
+//                width: 1
+//            }
 
-            radius: 3
+//            radius: 3
 
-            y: theDirView.currentItem.y
+//            y: theDirView.currentItem.y
 
-            Behavior on y {
-                SmoothedAnimation { velocity: 200 }
-            }
-        }
-    }
+//            Behavior on y {
+//                SmoothedAnimation { velocity: 200 }
+//            }
+//        }
+//    }
 
     ListView{
         id: theDirView
@@ -91,13 +107,7 @@ Item {
         footer: Item {
             id: listFooter
             width: parent.width
-            height: 24
-
-            anchors{
-                left: parent.left
-                right: parent.right
-                margins: 2
-            }
+            height: 100
 
             ImageButton{
                 id : buttonAdd
@@ -111,8 +121,10 @@ Item {
 
                 anchors{
                     horizontalCenter: parent.horizontalCenter
+                    bottom: parent.bottom
                 }
             }
+
         }
 
         clip: true

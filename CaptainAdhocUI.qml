@@ -136,12 +136,11 @@ Rectangle {
 
             Item{
                 id: downloadFolderConfig
-
-                height: 50
+                width: parent.width
+                height: 64
 
                 anchors{
-                    margins: 2
-
+                    margins: 10
                     left: parent.left
                     right: parent.right
                     bottom: parent.bottom
@@ -157,14 +156,11 @@ Rectangle {
                     imgWidth: 64
                     imgHeight: 64
 
-                    anchors{
-                        left: parent.left + 30
-                    }
                 }
 
                 Text {
                     id: label
-                    text: "Download folder : "
+                    text: "<b>Download folder : </b>" + " D:/Users/Documents/SharedDownloads "
                     textFormat: Qt.RichText
                     font.pointSize: 9
                     color: "#cccccc";
@@ -172,7 +168,8 @@ Rectangle {
                     styleColor: "black";
                     anchors{
                         verticalCenter: parent.verticalCenter
-                        left: buttonAdd.right + 20
+                        left: buttonAdd.right
+                        leftMargin: 20
                     }
                     font.pixelSize: 16
                 }
@@ -188,7 +185,7 @@ Rectangle {
             width: parent.width
             height: parent.height
 
-            FileView{
+            DownloadView{
                 id: downloadFileView
 
                 anchors.fill: parent
@@ -205,7 +202,7 @@ Rectangle {
             height: parent.height
 
             FileView{
-                id:availableFilesView
+                id: availableFileView
 
                 anchors.fill: parent
             }
