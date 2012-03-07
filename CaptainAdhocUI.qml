@@ -51,12 +51,14 @@ Rectangle {
             id: vitesse
             Column {
                 Text {
+                    id:downSpeed
                     text: " Download : Kb/s "
                     color: "#999999";
                     style: Text.Raised;
                     styleColor: "black";
                 }
                 Text {
+                    id:upSpeed
                     text: " Upload : Kb/s "
                     color: "#999999";
                     style: Text.Raised;
