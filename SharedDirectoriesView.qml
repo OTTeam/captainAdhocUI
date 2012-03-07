@@ -25,6 +25,9 @@ Item {
             Text {
                 id: folder
                 text: folderPath
+                textFormat: Qt.RichText
+                color: "#cccccc";
+                style: Text.Raised;
 
                 anchors{
                     margins: 2
@@ -42,9 +45,9 @@ Item {
             ImageButton{
                 id: delButton
 
-                imgSource: "images/cross.png"
-                imgHooverSource: "images/cross_hoover.png"
-                imgClickedSource: "images/cross_clicked.png"
+                imgSource: "images/delete.png"
+                imgHooverSource: "images/delete_hover.png"
+                imgClickedSource: "images/delete_clicked.png"
                 imgHeight: parent.height - 5
                 imgWidth: imgHeight
 
@@ -96,26 +99,18 @@ Item {
                 margins: 2
             }
 
-            LineInput{
-                id: newDirInput
+            ImageButton{
+                id : buttonAdd
+                textColor: "white"
+
+                imgSource: "images/plus.png"
+                imgHooverSource : "images/plus_hover.png"
+                imgClickedSource : "images/plus_clicked.png"
+                imgWidth: 64
+                imgHeight: 64
 
                 anchors{
-                    left: parent.left
-                    top: parent.top
-                    bottom: parent.bottom
-                    right: addDirButton.left
-                }
-            }
-
-            SimpleButton{
-                id: addDirButton
-                label: "Add"
-                width: 50
-                anchors{
-                    margins: 2
-                    top: parent.top
-                    bottom: parent.bottom
-                    right: parent.right
+                    horizontalCenter: parent.horizontalCenter
                 }
             }
         }

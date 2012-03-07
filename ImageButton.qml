@@ -10,7 +10,7 @@ Rectangle {
     color: "transparent"
 
     property string label
-    property color textColor: buttonLabel.color
+    property color textColor: "black"
     property real labelSize: 14
     // possible values : left, right, down
     // if none of this is used, down is used as default
@@ -75,6 +75,7 @@ Rectangle {
         id: buttonLabel
 
         text : parent.label
+        color : textColor
 
         x : getTextXPosition()
         y : getTextYPosition()
