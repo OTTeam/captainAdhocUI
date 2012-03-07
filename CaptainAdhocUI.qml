@@ -33,12 +33,15 @@ Rectangle {
 
     Rectangle{
         id:taskbar
-        Image { source: "images/bg.png";
+        Image {
+                id: imTaskbar
+                source: "images/bg.png";
                 height: 30
                 width: 640
         }
 
         height: 30
+        width: 640
 
         anchors{
             left: parent.left
@@ -67,7 +70,24 @@ Rectangle {
             anchors{
                 left: parent.left
                 bottom: parent.bottom
-                verticalCenter: taskbar.verticalCenter
+            }
+        }
+
+        Item {
+            id: userProfil
+            Text {
+                text: "Welcome, " + "<b>Captain</b>"
+                color: "#999999";
+                style: Text.Raised;
+                styleColor: "black";
+                font.pointSize: 11
+                anchors{
+                    centerIn: parent
+                }
+            }
+            height: 30
+            anchors{
+                centerIn: parent
             }
         }
 
