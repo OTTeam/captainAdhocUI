@@ -125,7 +125,7 @@ Component {
             }
 
 
-
+/*
             Image {
                 id: imDownload;
                 x: 600
@@ -146,6 +146,7 @@ Component {
                     onExited: { parent.source = "images/down_arrow.png"}
                 }
             }
+            */
         }
     }
 }
