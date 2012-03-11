@@ -1,6 +1,7 @@
 import QtQuick 1.1
 
 Rectangle {
+    id: mainUI
 
     function updateDownSpeed( newSpeed){
         vitesse.downSpeed = newSpeed;
@@ -23,6 +24,7 @@ Rectangle {
         mainDisplay.slideChanged.connect( updateLabels )
     }
 
+    // ribbon
     Rectangle{
         id:ribbon
         Image { source: "images/bg.png";
@@ -38,7 +40,7 @@ Rectangle {
         }
     }
 
-
+    // taskbar
     Rectangle{
         id:taskbar
         Image { source: "images/bg.png";
@@ -93,6 +95,7 @@ Rectangle {
         }
     }
 
+    // separator
     Rectangle{
         id: separator
         gradient: Gradient{
@@ -120,8 +123,9 @@ Rectangle {
             bottom: taskbar.top
         }
 
-        current: 2
+        current: 1
 
+        // configuration slide
         Rectangle{
             id: configurationSlide
             color: "black";
@@ -197,13 +201,12 @@ Rectangle {
 
             DownloadView{
                 id: downloadFileView
-
                 anchors.fill: parent
             }
         }
 
         Rectangle{
-            id: thirdSlide
+            id: availableFilesView
             color:"darkgray"
 
             property string title: "  Home  "
@@ -213,7 +216,6 @@ Rectangle {
 
             FileView{
                 id: availableFileView
-
                 anchors.fill: parent
             }
         }
