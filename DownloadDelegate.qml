@@ -125,6 +125,20 @@ Component {
             }
 
 
+            ImageButton{
+                id: delButton
+
+                visible: ( model.modelData.progress >= 0 && model.modelData.progress <= 100 )
+
+                imgSource: "images/delete.png"
+                imgHooverSource: "images/delete_hover.png"
+                imgClickedSource: "images/delete_clicked.png"
+                imgHeight: parent.height - 5
+                imgWidth: imgHeight
+
+                x: parent.width - imgHeight - 3.5
+                y: 2.5
+            }
 /*
             Image {
                 id: imDownload;
