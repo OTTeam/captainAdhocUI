@@ -1,6 +1,15 @@
 import QtQuick 1.1
 
 Rectangle {
+    id: mainUI
+
+    function updateDownSpeed( newSpeed){
+        vitesse.downSpeed = newSpeed;
+    }
+
+    function updateUpSpeed( newSpeed ){
+        vitesse.upSpeed = newSpeed;
+    }
 
     width: 640
     height: 550
@@ -15,6 +24,7 @@ Rectangle {
         mainDisplay.slideChanged.connect( updateLabels )
     }
 
+    // ribbon
     Rectangle{
         id:ribbon
         Image { source: "images/bg.png";
@@ -30,7 +40,7 @@ Rectangle {
         }
     }
 
-
+    // taskbar
     Rectangle{
         id:taskbar
         Image {
@@ -52,15 +62,17 @@ Rectangle {
 
         Item {
             id: vitesse
+            property int downSpeed: 0
+            property int upSpeed: 0
             Column {
                 Text {
-                    text: " Download : Kb/s "
+                    text: " Download : " + vitesse.downSpeed + " Kb/s "
                     color: "#999999";
                     style: Text.Raised;
                     styleColor: "black";
                 }
                 Text {
-                    text: " Upload : Kb/s "
+                    text: " Upload : " + vitesse.upSpeed + " Kb/s "
                     color: "#999999";
                     style: Text.Raised;
                     styleColor: "black";
@@ -103,6 +115,7 @@ Rectangle {
         }
     }
 
+    // separator
     Rectangle{
         id: separator
         gradient: Gradient{
@@ -130,8 +143,9 @@ Rectangle {
             bottom: taskbar.top
         }
 
-        current: 2
+        current: 1
 
+        // configuration slide
         Rectangle{
             id: configurationSlide
             color: "black";
@@ -207,13 +221,12 @@ Rectangle {
 
             DownloadView{
                 id: downloadFileView
-
                 anchors.fill: parent
             }
         }
 
         Rectangle{
-            id: thirdSlide
+            id: availableFilesView
             color:"darkgray"
 
             property string title: "  Home  "
@@ -223,7 +236,6 @@ Rectangle {
 
             FileView{
                 id: availableFileView
-
                 anchors.fill: parent
             }
         }
