@@ -61,6 +61,8 @@ Item {
 
                 x: parent.width - imgHeight - 3.5
                 y: 2.5
+
+                onClicked: { mainUI.delSharedDir( index ) }
             }
         }
     }
