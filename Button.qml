@@ -76,7 +76,7 @@ Item {
     states: [
         State {
             name: "clicked"
-            PropertyChanges { target: container; text: "Connecté"}
+            PropertyChanges { target: container; text: "Connecter"}
         }
     ]
     transitions: Transition {

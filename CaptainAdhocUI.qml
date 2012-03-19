@@ -123,7 +123,7 @@ Rectangle {
 
         Button{
             id : deconnexion
-            text: "Deconnexion"
+            text: "Déconnecter"
             width: 100
             height: 30
             anchors{
