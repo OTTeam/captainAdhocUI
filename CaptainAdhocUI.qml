@@ -38,6 +38,17 @@ Rectangle {
                 width: 640
         }
 
+        SearchBox {
+            id: search;
+            focus: true
+
+            anchors {
+                bottom: parent.bottom;
+                horizontalCenter: parent.horizontalCenter
+                bottomMargin: 5
+            }
+        }
+
         height: ribbonHeight
 
         anchors{
