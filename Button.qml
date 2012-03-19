@@ -56,15 +56,16 @@ Item {
     }
     BorderImage {
         id: pressed
-        opacity: 0
+        opacity: 0.7
         source: "images/toolbutton.sci"
         width: container.width; height: container.height
     }
     MouseArea {
         id: mouseRegion
         anchors.fill: buttonImage
-        onClicked: { container.clicked(); }
+        onClicked: container.state == 'clicked' ? container.state = "" : container.state = 'clicked';
     }
+
     Text {
         id: btnText
         color: if(container.keyUsing){"#D0D0D0";} else {"#FFFFFF";}
@@ -74,14 +75,8 @@ Item {
     }
     states: [
         State {
-            name: "Pressed"
-            when: mouseRegion.pressed == true
-            PropertyChanges { target: pressed; opacity: 1 }
-        },
-        State {
-            name: "Focused"
-            when: container.activeFocus == true
-            PropertyChanges { target: btnText; color: "#FFFFFF" }
+            name: "clicked"
+            PropertyChanges { target: container; text: "Connecté"}
         }
     ]
     transitions: Transition {
