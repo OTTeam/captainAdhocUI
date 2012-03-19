@@ -8,7 +8,7 @@ Rectangle {
     signal pickDownloadFolder()
     signal pickSharedDir()
     signal delSharedDir( int index )
-    signal pickFileToDownload( int index )
+    signal pickFileToDownload( string fileHash )
 
     function updateDownSpeed( newSpeed){
         vitesse.downSpeed = newSpeed;
