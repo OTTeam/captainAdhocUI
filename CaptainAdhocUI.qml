@@ -138,7 +138,11 @@ Rectangle {
 
         Button{
             id : deconnexion
+<<<<<<< HEAD
             text: "Disconnection"
+=======
+            text: "Déconnecter"
+>>>>>>> f11d3da51c6a06ebbe45546d3cf89e3f3cd949ef
             width: 100
             height: 30
             anchors{

@@ -70,8 +70,9 @@ Item {
     MouseArea {
         id: mouseRegion
         anchors.fill: buttonImage
-        onClicked: { container.clicked(); }
+        onClicked: container.state == 'clicked' ? container.state = "" : container.state = 'clicked';
     }
+
     Text {
         id: btnText
         color: if(container.keyUsing){"#D0D0D0";} else {"#FFFFFF";}
