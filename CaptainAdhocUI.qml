@@ -14,23 +14,21 @@ Rectangle {
     signal requestDisconnection()
 
     function connectionDone(){
+        console.log( "[UI] RECEIVED connectionDone signal" )
         deconnexion.enabled = true;
         deconnexion.text = "Disconnection";
         connected = true;
     }
 
     function disconnectionDone(){
+        console.log( "[UI] RECEIVED disconnectionDone signal" )
         connected = false
         deconnexion.enabled = true;
         deconnexion.text = "Connection"
     }
 
-    function updateDownSpeed( newSpeed){
-        vitesse.downSpeed = newSpeed;
-    }
-
-    function updateUpSpeed( newSpeed ){
-        vitesse.upSpeed = newSpeed;
+    function updateHostsNumber( newNumber ){
+        hostsNumber.hosts = newNumber;
     }
 
     width: 640
@@ -94,27 +92,19 @@ Rectangle {
 
 
         Item {
-            id: vitesse
-            property int downSpeed: 0
-            property int upSpeed: 0
-            Column {
-                Text {
-                    text: " Download : " + vitesse.downSpeed + " Kb/s "
+            id: hostsNumber
+            property int hosts: 0
+            Text {
+                    text: " Connected users : " + hostsNumber.hosts
                     color: "#999999";
                     style: Text.Raised;
                     styleColor: "black";
-                }
-                Text {
-                    text: " Upload : " + vitesse.upSpeed + " Kb/s "
-                    color: "#999999";
-                    style: Text.Raised;
-                    styleColor: "black";
-                }
+                    font.pointSize: 11
+                    anchors.verticalCenter: parent.verticalCenter
             }
-            height: 30
             anchors{
                 left: parent.left
-                bottom: parent.bottom
+                verticalCenter: parent.verticalCenter
             }
         }
 
@@ -146,12 +136,15 @@ Rectangle {
                 bottom: parent.bottom
             }
             onClicked: {
+                console.log( "Button clicked with 'connected' being " + connected );
                 if( connected ){
+                    console.log( "[UI] requesting disconnection" );
                     mainUI.requestDisconnection();
                     text = "Disconnecting...";
                 }
                 else
                 {
+                    console.log( "[UI] requesting connection" );
                     mainUI.requestConnection();
                     text = "Connecting..."
                 }
