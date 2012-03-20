@@ -75,7 +75,7 @@ Component {
                 Column {
 
                             Text {
-                                    text: '<b>File Name:</b> ' + fileName
+                                    text: '<b>File Name:</b> ' + name
                                     textFormat: Qt.RichText
                                     font.pointSize: 9
                                     color: "#cccccc";
@@ -133,7 +133,7 @@ Component {
                     onExited: { parent.source = "images/down_arrow.png"}
                     onClicked: {
                         console.log( "File " + model.modelData.name + " selected for download" );
-                        mainUI.pickFileToDownload( model.modelData.clientFather, model.modelData.hash );
+                        requestDownloadFromView();
                     }
                 }
             }
