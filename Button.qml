@@ -51,14 +51,21 @@ Item {
 
     BorderImage {
         id: buttonImage
-        source: "images/toolbutton.sci"
+        source: "images/toolbutton.png"
         width: container.width; height: container.height
     }
     BorderImage {
         id: pressed
         opacity: 0
-        source: "images/toolbutton.sci"
+        source: "images/toolbutton_pressed.png"
         width: container.width; height: container.height
+    }
+    BorderImage {
+        id: disabled
+        opacity: 0
+        source: "images/toolbutton_disabled.png"
+        width: container.width
+        height: container.height
     }
     MouseArea {
         id: mouseRegion
@@ -82,7 +89,15 @@ Item {
             name: "Focused"
             when: container.activeFocus == true
             PropertyChanges { target: btnText; color: "#FFFFFF" }
+        },
+        State {
+            name: "Disabled"
+            when: container.enabled == false
+            PropertyChanges { target: disabled; opacity: 1 }
+            PropertyChanges { target: btnText; color: "gray" }
+            PropertyChanges { target: mouseRegion; enabled:false }
         }
+
     ]
     transitions: Transition {
         ColorAnimation { target: btnText; }

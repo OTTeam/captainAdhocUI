@@ -4,11 +4,26 @@ Rectangle {
     id: mainUI
 
     property string downloadFolder: "/C/Users/Public/Downloads"
+    property bool connected : true;
 
     signal pickDownloadFolder()
     signal pickSharedDir()
     signal delSharedDir( int index )
-    signal pickFileToDownload( string fileHash )
+    signal pickFileToDownload( int pointer, string fileHash )
+    signal requestConnection()
+    signal requestDisconnection()
+
+    function connectionDone(){
+        deconnexion.enabled = true;
+        deconnexion.text = "Disconnection";
+        connected = true;
+    }
+
+    function disconnectionDone(){
+        connected = false
+        deconnexion.enabled = true;
+        deconnexion.text = "Connection"
+    }
 
     function updateDownSpeed( newSpeed){
         vitesse.downSpeed = newSpeed;
@@ -123,12 +138,24 @@ Rectangle {
 
         Button{
             id : deconnexion
-            text: "Deconnexion"
+            text: "Disconnection"
             width: 100
             height: 30
             anchors{
                 right: parent.right
                 bottom: parent.bottom
+            }
+            onClicked: {
+                if( connected ){
+                    mainUI.requestDisconnection();
+                    text = "Disconnecting...";
+                }
+                else
+                {
+                    mainUI.requestConnection();
+                    text = "Connecting..."
+                }
+                enabled = false
             }
         }
     }
