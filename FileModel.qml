@@ -32,42 +32,42 @@ ListModel {
     ListElement {
         fileName: "photo_groupe_SIMS.jpg"
         authorName: "nhan"
-        size: "257 KB"
+        size: 257
         type: "jpg"
         completion:100
     }
     ListElement {
         fileName: "loremipsum.jpg"
         authorName: "gaetan"
-        size: "1.2 MB"
+        size: 1654336
         type: "jpg"
         completion:101
     }
     ListElement {
         fileName: "IF_annale.rar"
         authorName: "kevin"
-        size: "7.82 MB"
+        size: 79873
         type: "rar"
         completion:52
     }
     ListElement {
         fileName: "captainAdhocFinal.qml"
         authorName: "sebastien"
-        size: "11 MB"
+        size: 7625228
         type: "qml"
         completion:17
     }
     ListElement {
         fileName: "photo_groupe_SIMS.jpg"
         authorName: "nhan"
-        size: "212 KB"
+        size: 993883
         type: "jpg"
         completion:100
     }
     ListElement {
         fileName: "photo_groupe_SIMS.jpg"
         authorName: "nhan"
-        size: "212 KB"
+        size: 22222
         type: "jpg"
         completion:100
     }

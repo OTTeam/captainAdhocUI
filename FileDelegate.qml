@@ -3,6 +3,18 @@ import QtQuick 1.0
 Component {
     id: listDelegate
     Item {
+        function computeSize( size ){
+            if (size < 1024) {
+               return size;
+            }
+            else if ((size >= 1024) && (size < 1024*1024)){
+               return (size/1024);
+            }
+            else if ((size >= 1024*1024) && (size < 1024*1024*1024)){
+                return (size/1048576);
+            }
+        }
+
         id: wrapper;
         width: wrapper.ListView.view.width;
         height: if(txt.height > 75)
@@ -93,7 +105,7 @@ Component {
                                     wrapMode: Text.WordWrap
                             }
                             Text {
-                                    text: '<b>Size :</b> ' + size
+                                    text: '<b>Size :</b> ' + computeSize()
                                     textFormat: Qt.RichText
                                     font.pointSize: 9
                                     color: "#cccccc";
